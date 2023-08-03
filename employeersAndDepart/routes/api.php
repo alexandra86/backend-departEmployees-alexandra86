@@ -12,3 +12,5 @@ Route::delete('/users/{id}', [UserController::class, 'deleteUser']);
 
 Route::post('/departments', [DepartmentController::class, 'createDepartment']);
 Route::get('/departments', [DepartmentController::class, 'listDepartments']);
+Route::patch('/departments/{id}', [DepartmentController::class, 'updateDepartment']);
+Route::delete('/departments/{id}', [DepartmentController::class, 'deleteDepartment']);
