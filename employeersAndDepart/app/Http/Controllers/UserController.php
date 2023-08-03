@@ -2,19 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateUserRequest;
 use App\Models\User;
 use App\Services\CreateUserService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller {
-    public function createUser(CreateUserRequest $request){
+    public function createUser(Request $request){
         $createUserService = new CreateUserService();
-        return $createUserService->execute($request->all());
+        $userData = $request->all();
+        $user = $createUserService->execute($userData);
+        $user->department_id = $userData['department_id'];
+        $user->save();
+        return $user;
+
     }
 
     public function listUsers(){
-        return User::all();
+        return User::with('department')->get();
     }
 
     public function updateUser(Request $request, $id){

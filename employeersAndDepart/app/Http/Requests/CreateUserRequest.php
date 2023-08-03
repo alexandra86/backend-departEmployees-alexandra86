@@ -25,7 +25,7 @@ class CreateUserRequest extends FormRequest
             'email'=>['required', 'email'],
             'password'=>['required', 'min:6'],
             'phone' => ['nullable', 'string'],
-            'department_id'=>['nullable', 'string','exists: departments,id']
+            'department_id'=>['nullable','exists: departments,id']
         ];
     }
 
@@ -43,7 +43,6 @@ class CreateUserRequest extends FormRequest
             'password.min'=>'Senha deve ser conter no mínimo 6 caracteres!',
             'phone.string'=>'Telefone deve ser uma string!',
             'department_id.exists'=>'Departamento não encontrado!',
-            'department_id.string'=>'Departamento deve ser uma string!'
         ];
     }
 }
