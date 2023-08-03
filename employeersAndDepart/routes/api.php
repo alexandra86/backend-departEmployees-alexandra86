@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\DepartmentController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\{AuthController, UserController, DepartmentController};
 use Illuminate\Support\Facades\Route;
 
 Route::post('/users', [UserController::class, 'createUser']);
@@ -14,3 +13,5 @@ Route::post('/departments', [DepartmentController::class, 'createDepartment']);
 Route::get('/departments', [DepartmentController::class, 'listDepartments']);
 Route::patch('/departments/{id}', [DepartmentController::class, 'updateDepartment']);
 Route::delete('/departments/{id}', [DepartmentController::class, 'deleteDepartment']);
+
+Route::post('/auth/login', [AuthController::class, 'login']);
