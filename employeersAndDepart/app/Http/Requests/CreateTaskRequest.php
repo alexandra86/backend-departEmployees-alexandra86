@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Carbon;
 
 class CreateTaskRequest extends FormRequest
 {
@@ -16,7 +17,9 @@ class CreateTaskRequest extends FormRequest
             'title'=> ['required', 'string', 'min:3'],
             'description' => ['nullable', 'string'],
             'assignee_id' => ['nullable','exists: users,id'],
-            'due_date' => ['nullable', 'datetime']
+            'due_date' => ['nullable', 'string'],
+
+            
         ];
     }
 
@@ -26,7 +29,16 @@ class CreateTaskRequest extends FormRequest
             'title.string'=> 'O título da tarefa deve ser uma string!',
             'title.min'=> 'O título da tarefa deve conter no mínimo 3 caracteres!',
             'description.string'=> 'A descrição da tarefa deve ser uma string!',
-            'due_date.datetime'=> 'O prazo limite da tarefa deve conter uma data válida!'
+            'due_date.string' => 'O prazo limite da tarefa deve estar no formato de data válido (DD/MM/YYYY)!',
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        if ($this->has('due_date')) {
+            $this->merge([
+                'due_date' => Carbon::createFromFormat('d/m/Y', $this->due_date)->format('Y-m-d'),
+            ]);
+        }
     }
 }

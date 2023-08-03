@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('description')->nullable();
             $table->timestamps();
-            $table->dateTime('due_date')->nullable();
+            $table->date('due_date')->nullable();
             $table->unsignedBigInteger('assignee_id')->nullable();
 
             $table->foreign('assignee_id')

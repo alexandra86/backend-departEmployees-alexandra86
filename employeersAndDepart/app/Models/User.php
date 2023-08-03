@@ -34,8 +34,7 @@ class User extends Authenticatable implements JWTSubject
         'password' => 'hashed',
     ];
 
-    public function department()
-    {
+    public function department(){
         return $this->belongsTo(Department::class);
     }
 

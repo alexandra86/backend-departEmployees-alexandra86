@@ -17,6 +17,11 @@ class DepartmentController extends Controller {
         return Department::all();
     }
 
+    public function retrieveDepartment($id) {
+        $department = Department::findOrFail($id);
+        return $department;
+    }
+
     public function updateDepartment(Request $request, $id){
         $department = Department::findOrFail($id);
         $department->update($request->all());
@@ -26,6 +31,6 @@ class DepartmentController extends Controller {
     public function deleteDepartment($id){
         $department = Department::findOrFail($id);
         $department->delete();
-        return response()->json(['message' => 'Usuário excluído com sucesso']);
+        return response()->json(['message' => 'Departamento excluído com sucesso']);
     }
 }

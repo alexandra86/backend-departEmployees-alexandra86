@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 
 class Task extends Model
 {
@@ -22,8 +23,8 @@ class Task extends Model
         'updated_at',
     ];
 
-    public function userTask()
-    {
-        return $this->belongsTo(User::class);
+    public function userTask(){
+        return $this->belongsTo(User::class, 'assignee_id');
     }
+
 }
