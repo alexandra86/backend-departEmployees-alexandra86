@@ -72,7 +72,14 @@ Clone o projeto em sua máquina e instale as dependências com o comando:
 composer
 ```
 
-### 3.2. Variáveis de Ambiente
+### 3.2. Comandos Docker
+```
+comando para rodar o docker: docker compose up;
+entrar no container do docker: docker exec -it <nome-do-container> /bin/sh
+
+```
+
+### 3.3. Variáveis de Ambiente
 
 Em seguida, crie um arquivo **.env**, copiando o formato do arquivo **.env.example**:
 ```
@@ -81,7 +88,7 @@ cp .env.example .env
 
 Configure suas variáveis de ambiente com suas credenciais do MySQL e uma nova database da sua escolha.
 
-### 3.3. Migrations
+### 3.4. Migrations
 
 Execute as migrations com o comando:
 
